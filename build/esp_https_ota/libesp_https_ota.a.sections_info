@@ -1,0 +1,82 @@
+In archive /Users/idf3/projects/ESP32WiFiAP/build/esp_https_ota/libesp_https_ota.a:
+
+esp_https_ota.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal._http_handle_response_code 00000038  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal._http_connect 00000028  00000000  00000000  0000006c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal._http_cleanup 00000008  00000000  00000000  00000094  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal._ota_write 00000018  00000000  00000000  0000009c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal.esp_https_ota_begin 00000088  00000000  00000000  000000b4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal.esp_https_ota_is_complete_data_received 00000004  00000000  00000000  0000013c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal.esp_https_ota_get_img_desc 0000004c  00000000  00000000  00000140  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal.esp_https_ota_perform 00000074  00000000  00000000  0000018c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal.esp_https_ota_finish 00000030  00000000  00000000  00000200  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .literal.esp_https_ota 00000020  00000000  00000000  00000230  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .text         00000000  00000000  00000000  00000250  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 11 .data         00000000  00000000  00000000  00000250  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 12 .bss          00000000  00000000  00000000  00000250  2**0
+                  ALLOC
+ 13 .text.process_again 0000001d  00000000  00000000  00000250  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .rodata.str1.4 00000540  00000000  00000000  00000270  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 15 .text._http_handle_response_code 000000bc  00000000  00000000  000007b0  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .text._http_connect 00000078  00000000  00000000  0000086c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text._http_cleanup 00000016  00000000  00000000  000008e4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text._ota_write 00000054  00000000  00000000  000008fc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .text.esp_https_ota_begin 000001b5  00000000  00000000  00000950  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .text.esp_https_ota_is_complete_data_received 00000010  00000000  00000000  00000b08  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 21 .text.esp_https_ota_get_img_desc 000000fa  00000000  00000000  00000b18  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .text.esp_https_ota_perform 00000159  00000000  00000000  00000c14  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 23 .text.esp_https_ota_finish 00000099  00000000  00000000  00000d70  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 24 .text.esp_https_ota_get_image_len_read 00000016  00000000  00000000  00000e0c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 25 .text.esp_https_ota 00000060  00000000  00000000  00000e24  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 26 .debug_frame  00000130  00000000  00000000  00000e84  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 27 .debug_info   00001525  00000000  00000000  00000fb4  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 28 .debug_abbrev 00000267  00000000  00000000  000024d9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 29 .debug_loc    00000a11  00000000  00000000  00002740  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 30 .debug_aranges 00000078  00000000  00000000  00003151  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 31 .debug_ranges 00000068  00000000  00000000  000031c9  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 32 .debug_line   00000aab  00000000  00000000  00003231  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 33 .debug_str    00001023  00000000  00000000  00003cdc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 34 .comment      0000003b  00000000  00000000  00004cff  2**0
+                  CONTENTS, READONLY
+ 35 .xtensa.info  00000038  00000000  00000000  00004d3a  2**0
+                  CONTENTS, READONLY
+ 36 .xt.lit       00000050  00000000  00000000  00004d72  2**0
+                  CONTENTS, RELOC, READONLY
+ 37 .xt.prop      000006d8  00000000  00000000  00004dc2  2**0
+                  CONTENTS, RELOC, READONLY

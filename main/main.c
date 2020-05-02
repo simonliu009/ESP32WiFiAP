@@ -6,10 +6,14 @@
    software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
    CONDITIONS OF ANY KIND, either express or implied.
 */
+
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/event_groups.h"
+
+#include "esp_event_loop.h"
+
 #include "esp_system.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
@@ -42,29 +46,39 @@ static RTC_DATA_ATTR char GOT_IP = false;
 static RTC_DATA_ATTR char __SSID[32];
 static RTC_DATA_ATTR char __PWD[64];
 
-static void wifi_event_handler(void *arg, esp_event_base_t event_base,
-                               int32_t event_id, void *event_data)
-{
-    if (event_id == WIFI_EVENT_AP_STACONNECTED)
-    {
-        wifi_event_ap_staconnected_t *event = (wifi_event_ap_staconnected_t *)event_data;
-        ESP_LOGI(TAG, "station " MACSTR " join, AID=%d",
-                 MAC2STR(event->mac), event->aid);
-    }
-    else if (event_id == WIFI_EVENT_AP_STADISCONNECTED)
-    {
-        wifi_event_ap_stadisconnected_t *event = (wifi_event_ap_stadisconnected_t *)event_data;
-        ESP_LOGI(TAG, "station " MACSTR " leave, AID=%d",
-                 MAC2STR(event->mac), event->aid);
-    }
+// static void wifi_event_handler(void *arg, esp_event_base_t event_base,
+//                                int32_t event_id, void *event_data)
+// {
+//     if (event_id == WIFI_EVENT_AP_STACONNECTED)
+//     {
+//         wifi_event_ap_staconnected_t *event = (wifi_event_ap_staconnected_t *)event_data;
+//         // ESP_LOGI(TAG, "station " MACSTR " join, AID=%d",
+//         //          MAC2STR(event->mac), event->aid);
+//     }
+//     else if (event_id == WIFI_EVENT_AP_STADISCONNECTED)
+//     {
+//         wifi_event_ap_stadisconnected_t *event = (wifi_event_ap_stadisconnected_t *)event_data;
+//         // ESP_LOGI(TAG, "station " MACSTR " leave, AID=%d",
+//         //          MAC2STR(event->mac), event->aid);
+//     }
 
-    ESP_LOGI(TAG, "wifi_event_handler wifi_event_handler wifi_event_handler");
-}
+//     ESP_LOGI(TAG, "wifi_event_handler wifi_event_handler wifi_event_handler");
+// }
 
 static esp_err_t event_handler(void *ctx, system_event_t *event)
 {
     switch (event->event_id)
     {
+    case SYSTEM_EVENT_AP_STACONNECTED:
+    ESP_LOGI(TAG, "station:"MACSTR" join, AID=%d",
+                MAC2STR(event->event_info.sta_connected.mac),
+                event->event_info.sta_connected.aid);
+    break;
+    case SYSTEM_EVENT_AP_STADISCONNECTED:
+        ESP_LOGI(TAG, "station:"MACSTR"leave, AID=%d",
+                 MAC2STR(event->event_info.sta_disconnected.mac),
+                 event->event_info.sta_disconnected.aid);
+        break;
     case SYSTEM_EVENT_STA_START:
         esp_wifi_connect();
         break;
@@ -202,7 +216,7 @@ static httpd_handle_t start_webserver(void)
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
 
     // Start the httpd server
-    ESP_LOGI(TAG, "Starting server on port: '%d'", config.server_port);
+    ESP_LOGI(TAG, "Starting server at \r\nhttp://192.168.1.1:%d \r\nSSID:ESP32_Server\r\nPassword:ESP32_Server", config.server_port);
     if (httpd_start(&server, &config) == ESP_OK)
     {
         // Set URI handlers
@@ -251,7 +265,7 @@ void wifi_init_softap()
         wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();       //= WIFI_INIT_CONFIG_DEFAULT();
         ESP_ERROR_CHECK(esp_wifi_init(&cfg));
 
-        ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
+        // ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
 
         wifi_config_t wifi_config = {
             .ap = {
